@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.Diagnostics;
 
-namespace DatabasesSnelheidTesten
+namespace DatabasesSnelheidTesten.ADONET
 {	
 	public class ADONET
 	{
@@ -110,7 +110,7 @@ namespace DatabasesSnelheidTesten
 					command.Parameters.AddWithValue("@omschrijving", omschrijving);
 					command.Parameters.AddWithValue("@tijdsduur", tijdsduur);
 					command.Parameters.AddWithValue("@resolutie", resolutie);
-					command.Parameters.AddWithValue("@ID", amount);
+					command.Parameters.AddWithValue("@ID", i + 1);
 					//execute query
 					int affectedRows = command.ExecuteNonQuery();
 					totalAffectedRows += affectedRows;
@@ -137,7 +137,7 @@ namespace DatabasesSnelheidTesten
 					string query = "DELETE FROM Film WHERE filmID = @ID";
 					SqlCommand command = new SqlCommand(query, conn);
 					//add parameters
-					command.Parameters.AddWithValue("@ID", amount + 100);
+					command.Parameters.AddWithValue("@ID", i + 100);
 					//execute query
 					int affectedRows = command.ExecuteNonQuery();
 					totalAffectedRows += affectedRows;

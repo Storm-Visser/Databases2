@@ -6,12 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ADO.NET\" />
-    <Folder Include="EntityFramework\" />
     <Folder Include="NoSQL\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
