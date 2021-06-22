@@ -7,8 +7,9 @@ namespace DatabasesSnelheidTesten
         static void Main(string[] args)
         {
             Console.WriteLine("DataBase test initiated");
-            //TestADONET();
-            TestEntityFramework();
+            TestADONET();
+            //TestEntityFramework();
+            //TestNoSql();
             Console.WriteLine("Press enter to stop the tests");
             Console.ReadLine();
         }
@@ -149,6 +150,17 @@ namespace DatabasesSnelheidTesten
             Console.WriteLine("Time: " + entityFramework.testDelete(1000) + "ms");
             Console.WriteLine("End of test; EntityFramework Delete");
             Console.WriteLine("-------------------------------------------------------------------");
+        }
+
+        static void TestNoSql()
+        {
+            NoSQL.NoSql noSQL = new NoSQL.NoSql();
+            Console.WriteLine("Now testing; NoSql Inserts");
+            Console.WriteLine("Press enter to start the tests");
+            Console.ReadLine();
+            Console.WriteLine("1 row");
+            Console.WriteLine("Time: " + noSQL.testCreate(1) + "ms");
+            Console.WriteLine("-----------------------------------------");
         }
     }
 }

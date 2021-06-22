@@ -14,7 +14,7 @@ namespace DatabasesSnelheidTesten.ADONET
 			Random r = new Random();
 			int totalAffectedRows = 0;
 			stopwatch.Start();
-			for (int i = 0; i < amount; i++)
+			for (int i = 1; i <= amount; i++)
 			{
 				//create the variables
 				int genreID = r.Next(1, 31);
@@ -55,7 +55,7 @@ namespace DatabasesSnelheidTesten.ADONET
 			Random r = new Random();
 			int totalRetrievedRows = 0;
 			stopwatch.Start();
-			for (int i = 0; i < amount; i++)
+			for (int i = 1; i <= amount; i++)
 			{
 				//connect to the DB
 				using (var conn = new SqlConnection(connString))
@@ -65,7 +65,7 @@ namespace DatabasesSnelheidTesten.ADONET
 					string query = "SELECT * FROM Film WHERE filmID = @ID";
 					SqlCommand command = new SqlCommand(query, conn);
 					//add parameters
-					command.Parameters.AddWithValue("@ID", r.Next(1, 999999));
+					command.Parameters.AddWithValue("@ID", i + 1);
 					//execute query
 					SqlDataReader reader = command.ExecuteReader();
 					while (reader.Read())
@@ -86,7 +86,7 @@ namespace DatabasesSnelheidTesten.ADONET
 			Random r = new Random();
 			int totalAffectedRows = 0;
 			stopwatch.Start();
-			for (int i = 0; i < amount; i++)
+			for (int i = 1; i <= amount; i++)
 			{
 				//create the updated variables
 				int genreID = r.Next(1, 31);
@@ -110,7 +110,7 @@ namespace DatabasesSnelheidTesten.ADONET
 					command.Parameters.AddWithValue("@omschrijving", omschrijving);
 					command.Parameters.AddWithValue("@tijdsduur", tijdsduur);
 					command.Parameters.AddWithValue("@resolutie", resolutie);
-					command.Parameters.AddWithValue("@ID", i + 1);
+					command.Parameters.AddWithValue("@ID", i);
 					//execute query
 					int affectedRows = command.ExecuteNonQuery();
 					totalAffectedRows += affectedRows;
@@ -127,17 +127,15 @@ namespace DatabasesSnelheidTesten.ADONET
 		{
 			int totalAffectedRows = 0;
 			stopwatch.Start();
-			for (int i = 0; i < amount; i++)
+			for (int i = 1; i <= amount; i++)
 			{
 				//connect to the DB
 				using (var conn = new SqlConnection(connString))
 				{
 					conn.Open();
 					//create the query
-					string query = "DELETE FROM Film WHERE filmID = @ID";
+					string query = "DELETE FROM Film WHERE filmID IN (SELECT TOP 1 filmID FROM Film ORDER BY filmID desc) DBCC CHECKIDENT ('Film', RESEED, 0)";
 					SqlCommand command = new SqlCommand(query, conn);
-					//add parameters
-					command.Parameters.AddWithValue("@ID", i + 100);
 					//execute query
 					int affectedRows = command.ExecuteNonQuery();
 					totalAffectedRows += affectedRows;

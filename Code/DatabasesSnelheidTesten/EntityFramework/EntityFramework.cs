@@ -22,7 +22,6 @@ namespace DatabasesSnelheidTesten.EntityFramework
 			for (int i = 0; i < amount; i++)
 			{
 				//create variables
-				//create the updated variables
 				int genreID = r.Next(1, 31);
 				string naam = "film" + i.ToString();
 				string locatie = "/films/film" + i.ToString() + ".mp4";
