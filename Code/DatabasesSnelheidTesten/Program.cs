@@ -79,6 +79,7 @@ namespace DatabasesSnelheidTesten
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine("1,000,000 rows");
             Console.WriteLine("Time: " + adonetTest.testDelete(1000) + "ms");
+            //TODO-----------------------Create seperate method to reset the seed
             Console.WriteLine("End of test; ADO.NET Delete");
             Console.WriteLine("-------------------------------------------------------------------");
         }
