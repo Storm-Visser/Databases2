@@ -65,7 +65,7 @@ namespace DatabasesSnelheidTesten.ADONET
 					string query = "SELECT * FROM Film WHERE filmID = @ID";
 					SqlCommand command = new SqlCommand(query, conn);
 					//add parameters
-					command.Parameters.AddWithValue("@ID", i + 1);
+					command.Parameters.AddWithValue("@ID", i);
 					//execute query
 					SqlDataReader reader = command.ExecuteReader();
 					while (reader.Read())
