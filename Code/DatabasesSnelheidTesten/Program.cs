@@ -9,7 +9,7 @@ namespace DatabasesSnelheidTesten
             Console.WriteLine("DataBase test initiated");
             TestADONET();
             TestEntityFramework();
-            //TestNoSql();
+            TestNoSql();
             Console.WriteLine("Press enter to stop the tests");
             Console.ReadLine();
         }
@@ -87,6 +87,7 @@ namespace DatabasesSnelheidTesten
         static void TestEntityFramework()
         {
             EntityFramework.EntityFramework entityFramework = new EntityFramework.EntityFramework();
+            entityFramework.createGenres();
             Console.WriteLine("Now testing; EntityFramework Inserts");
             Console.WriteLine("Press enter to start the tests");
             Console.ReadLine();
@@ -162,6 +163,64 @@ namespace DatabasesSnelheidTesten
             Console.WriteLine("1 row");
             Console.WriteLine("Time: " + noSQL.testCreate(1) + "ms");
             Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("1,000 rows");
+            Console.WriteLine("Time: " + noSQL.testCreate(10) + "ms");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("100,000 rows");
+            Console.WriteLine("Time: " + noSQL.testCreate(100) + "ms");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("1,000,000 rows");
+            Console.WriteLine("Time: " + noSQL.testCreate(1000) + "ms");
+            Console.WriteLine("End of test; NoSql Inserts");
+            Console.WriteLine("-------------------------------------------------------------------");
+            Console.WriteLine("Now testing; NoSql Get");
+            Console.WriteLine("Press enter to start the tests");
+            Console.ReadLine();
+            Console.WriteLine("1 row");
+            Console.WriteLine("Time: " + noSQL.testRead(1) + "ms");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("1,000 rows");
+            Console.WriteLine("Time: " + noSQL.testRead(10) + "ms");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("100,000 rows");
+            Console.WriteLine("Time: " + noSQL.testRead(100) + "ms");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("1,000,000 rows");
+            Console.WriteLine("Time: " + noSQL.testRead(1000) + "ms");
+            Console.WriteLine("End of test; NoSql Get");
+            Console.WriteLine("-------------------------------------------------------------------");
+            Console.WriteLine("Now testing; NoSql Update");
+            Console.WriteLine("Press enter to start the tests");
+            Console.ReadLine();
+            Console.WriteLine("1 row");
+            Console.WriteLine("Time: " + noSQL.testUpdate(1) + "ms");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("1,000 rows");
+            Console.WriteLine("Time: " + noSQL.testUpdate(10) + "ms");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("100,000 rows");
+            Console.WriteLine("Time: " + noSQL.testUpdate(100) + "ms");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("1,000,000 rows");
+            Console.WriteLine("Time: " + noSQL.testUpdate(1000) + "ms");
+            Console.WriteLine("End of test; NoSql Update");
+            Console.WriteLine("-------------------------------------------------------------------");
+            Console.WriteLine("Now testing; NoSql Delete");
+            Console.WriteLine("Press enter to start the tests");
+            Console.ReadLine();
+            Console.WriteLine("1 row");
+            Console.WriteLine("Time: " + noSQL.testDelete(1) + "ms");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("1,000 rows");
+            Console.WriteLine("Time: " + noSQL.testDelete(10) + "ms");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("100,000 rows");
+            Console.WriteLine("Time: " + noSQL.testDelete(100) + "ms");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("1,000,000 rows");
+            Console.WriteLine("Time: " + noSQL.testDelete(1000) + "ms");
+            Console.WriteLine("End of test; NoSql Delete");
+            Console.WriteLine("-------------------------------------------------------------------");
         }
     }
 }

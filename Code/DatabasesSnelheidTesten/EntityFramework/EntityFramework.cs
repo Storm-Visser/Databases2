@@ -16,8 +16,7 @@ namespace DatabasesSnelheidTesten.EntityFramework
 		public Double testCreate(int amount)
 		{
 			Random r = new Random();
-			int totalAffectedRows = amount;
-			this.createGenres();
+			int totalAffectedRows = 0;
 			stopwatch.Start();
 			for (int i = 0; i < amount; i++)
 			{
@@ -35,6 +34,7 @@ namespace DatabasesSnelheidTesten.EntityFramework
                 {
 					dbContext.Films.Add(film);
 					dbContext.SaveChanges();
+					totalAffectedRows++;
                 }
 
 			}
@@ -115,7 +115,7 @@ namespace DatabasesSnelheidTesten.EntityFramework
 			return time;
 		}
 
-		private void createGenres()
+		public void createGenres()
         {
 			string omschrijving = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.";
 			string[] genreNames = { "Geen specifiek genre", "Action", "Drama", "Animation | Drama | Fantasy", "Mystery", "Comedy | Mystery", "War film", "Drama | Romance", "Horror movie", "Children | Comedy | Fantasy | Musical", "Action | Adventure | Thriller", "Horror", "Fantasy", "Musical", "Adventure", "Documentary", "Comedy | Romance", "Thriller", "Animation", "Crime", "Sports film", "Detective", "Biographical film", "Psychological thriller", "Crime | Mystery | Thriller", "Action | Comedy | Romance", "Adventure | Comedy | Romance", "Sci - Fi", "Romance", "Drama | Sci - Fi]" , "Extra"};
