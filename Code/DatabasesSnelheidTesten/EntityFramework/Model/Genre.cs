@@ -11,10 +11,10 @@ namespace DatabasesSnelheidTesten.EntityFramework.Model
     {
         public int genreID { get; set; }
 
-        [MaxLength(100)]
+        //[MaxLength(100)]
         public string naam { get; set; }
 
-        [MaxLength(255)]
+        //[MaxLength(255)]
         public string omschrijving { get; set; }
     }
 }

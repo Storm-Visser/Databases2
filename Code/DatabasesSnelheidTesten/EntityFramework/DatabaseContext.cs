@@ -22,10 +22,10 @@ namespace DatabasesSnelheidTesten.EntityFramework
         public virtual DbSet<SerieGeschiedenis> SerieGeschiedenisen { get; set; }
         public virtual DbSet<Voorkeur> Voorkeuren { get; set; }
 
-        public DatabaseContext() : base("ConectionName")
+        public DatabaseContext() : base("connectionName")
         {
             Database.SetInitializer(
-                new DropCreateDatabaseIfModelChanges<DatabaseContext>()
+                new DropCreateDatabaseAlways<DatabaseContext>()
             );
         }
     }
