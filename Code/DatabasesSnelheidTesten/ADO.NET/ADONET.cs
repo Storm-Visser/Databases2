@@ -134,7 +134,7 @@ namespace DatabasesSnelheidTesten.ADONET
 				{
 					conn.Open();
 					//create the query
-					string query = "DELETE FROM Film WHERE filmID IN (SELECT TOP 1 filmID FROM Film ORDER BY filmID desc) DBCC CHECKIDENT ('Film', RESEED, 0)";
+					string query = "DELETE FROM Film WHERE filmID IN (SELECT TOP 1 filmID FROM Film ORDER BY filmID desc)";
 					SqlCommand command = new SqlCommand(query, conn);
 					//execute query
 					int affectedRows = command.ExecuteNonQuery();
@@ -146,6 +146,20 @@ namespace DatabasesSnelheidTesten.ADONET
 			Console.WriteLine("Amount of affected rows: " + totalAffectedRows);
 			double time = stopwatch.ElapsedMilliseconds;
 			return time;
+		}
+
+		public void reSeedDB()
+		{
+			using (var conn = new SqlConnection(connString))
+			{
+				conn.Open();
+				//create the query
+				string query = "DBCC CHECKIDENT ('Film', RESEED, 0)";
+				SqlCommand command = new SqlCommand(query, conn);
+				//execute query
+				int affectedRows = command.ExecuteNonQuery();
+				conn.Close();
+			}
 		}
 	}	
 }
