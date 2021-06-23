@@ -8,8 +8,8 @@ namespace DatabasesSnelheidTesten
         {
             Console.WriteLine("DataBase test initiated");
             TestADONET();
-            //TestEntityFramework();
-            //TestNoSql();
+            TestEntityFramework();
+            TestNoSql();
             Console.WriteLine("Press enter to stop the tests");
             Console.ReadLine();
         }
