@@ -39,6 +39,7 @@ namespace DatabasesSnelheidTesten.NoSQL
 			stopwatch.Stop();
 			Console.WriteLine("Amount of affected rows: " + totalAffectedRows);
 			double time = stopwatch.ElapsedMilliseconds;
+			stopwatch.Reset();
 			return time;
 		}
 
@@ -59,6 +60,7 @@ namespace DatabasesSnelheidTesten.NoSQL
 			stopwatch.Stop();
 			Console.WriteLine("Amount of retrieved rows: " + totalRetrievedRows);
 			double time = stopwatch.ElapsedMilliseconds;
+			stopwatch.Reset();
 			return time;
 		}
 
@@ -87,6 +89,7 @@ namespace DatabasesSnelheidTesten.NoSQL
 			stopwatch.Stop();
 			Console.WriteLine("Amount of affected rows: " + totalAffectedRows);
 			double time = stopwatch.ElapsedMilliseconds;
+			stopwatch.Reset();
 			return time;
 		}
 
@@ -105,6 +108,7 @@ namespace DatabasesSnelheidTesten.NoSQL
 			stopwatch.Stop();
 			Console.WriteLine("Amount of affected rows: " + totalAffectedRows);
 			double time = stopwatch.ElapsedMilliseconds;
+			stopwatch.Reset();
 			return time;
 		}
 

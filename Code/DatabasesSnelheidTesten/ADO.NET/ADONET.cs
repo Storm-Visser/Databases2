@@ -29,7 +29,7 @@ namespace DatabasesSnelheidTesten.ADONET
                 {
 					conn.Open();
 					//create the query
-					string query = "INSERT INTO Film (genreID, naam, filmlocatie, omschrijving, tijdsDuur, resolutie) VALUES (@genreID, @naam, @filmlocatie, @omschrijving, @tijdsDuur, @resolutie)";
+					string query = "INSERT INTO Films (genre_genreID, naam, filmlocatie, omschrijving, tijdsDuur, resolutie) VALUES (@genreID, @naam, @filmlocatie, @omschrijving, @tijdsDuur, @resolutie)";
 					SqlCommand command = new SqlCommand(query, conn);
 					//add parameters
 					command.Parameters.AddWithValue("@genreID", genreID);
@@ -47,6 +47,7 @@ namespace DatabasesSnelheidTesten.ADONET
 			stopwatch.Stop();
 			Console.WriteLine("Amount of affected rows: " + totalAffectedRows);
 			double time = stopwatch.ElapsedMilliseconds;
+			stopwatch.Reset();
 			return time;
         }
 
@@ -62,7 +63,7 @@ namespace DatabasesSnelheidTesten.ADONET
 				{
 					conn.Open();
 					//create the query
-					string query = "SELECT * FROM Film WHERE filmID = @ID";
+					string query = "SELECT * FROM Films WHERE filmID = @ID";
 					SqlCommand command = new SqlCommand(query, conn);
 					//add parameters
 					command.Parameters.AddWithValue("@ID", i);
@@ -78,6 +79,7 @@ namespace DatabasesSnelheidTesten.ADONET
 			stopwatch.Stop();
 			Console.WriteLine("Amount of retrieved rows: " + totalRetrievedRows);
 			double time = stopwatch.ElapsedMilliseconds;
+			stopwatch.Reset();
 			return time;
 		}
 
@@ -101,7 +103,7 @@ namespace DatabasesSnelheidTesten.ADONET
 				{
 					conn.Open();
 					//create the query
-					string query = "UPDATE Film SET genreID = @genreID, naam = @naam, filmlocatie = @filmlocatie, omschrijving = @omschrijving, tijdsDuur = @tijdsDuur, resolutie = @resolutie WHERE filmID = @ID";
+					string query = "UPDATE Films SET genre_genreID = @genreID, naam = @naam, filmlocatie = @filmlocatie, omschrijving = @omschrijving, tijdsDuur = @tijdsDuur, resolutie = @resolutie WHERE filmID = @ID";
 					SqlCommand command = new SqlCommand(query, conn);
 					//add parameters
 					command.Parameters.AddWithValue("@genreID", genreID);
@@ -120,6 +122,7 @@ namespace DatabasesSnelheidTesten.ADONET
 			stopwatch.Stop();
 			Console.WriteLine("Amount of affected rows: " + totalAffectedRows);
 			double time = stopwatch.ElapsedMilliseconds;
+			stopwatch.Reset();
 			return time;
 		}
 
@@ -134,7 +137,7 @@ namespace DatabasesSnelheidTesten.ADONET
 				{
 					conn.Open();
 					//create the query
-					string query = "DELETE FROM Film WHERE filmID IN (SELECT TOP 1 filmID FROM Film ORDER BY filmID desc)";
+					string query = "DELETE FROM Films WHERE filmID IN (SELECT TOP 1 filmID FROM Films ORDER BY filmID desc)";
 					SqlCommand command = new SqlCommand(query, conn);
 					//execute query
 					int affectedRows = command.ExecuteNonQuery();
@@ -145,6 +148,7 @@ namespace DatabasesSnelheidTesten.ADONET
 			stopwatch.Stop();
 			Console.WriteLine("Amount of affected rows: " + totalAffectedRows);
 			double time = stopwatch.ElapsedMilliseconds;
+			stopwatch.Reset();
 			return time;
 		}
 
@@ -154,7 +158,7 @@ namespace DatabasesSnelheidTesten.ADONET
 			{
 				conn.Open();
 				//create the query
-				string query = "DBCC CHECKIDENT ('Film', RESEED, 0)";
+				string query = "DBCC CHECKIDENT ('Films', RESEED, 0)";
 				SqlCommand command = new SqlCommand(query, conn);
 				//execute query
 				int affectedRows = command.ExecuteNonQuery();
